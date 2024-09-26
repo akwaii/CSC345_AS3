@@ -1,19 +1,16 @@
 //Alana Garcia, Brooklyn Wells
 
 //Test Program
-
 import java.util.Arrays;
 
 public class SortComparison {
     public static void main(String[] args) throws Exception {
-        // Instance of InsertionSort Class
-        InsertionSort sorter = new InsertionSort();
 
         int[] sizes = { 20000, 40000 }; // List sizes
 
         // Header for output table
-        String header = "    n       Sorted      Random     Reversed";
-        String separator = "========  ==========  ==========  ==========";
+        String header = "    n       Sorted       Random      Reversed";
+        String separator = "========  ==========    ========    ==========";
         System.out.println(header);
         System.out.println(separator);
 
@@ -24,24 +21,26 @@ public class SortComparison {
             for (int i = 0; i < size; i++) {
                 sortedArray[i] = i; // Sorted array
             }
-            long sortedTime = sorter.measureExecutionTime(Arrays.copyOf(sortedArray, sortedArray.length));
+            
+            long sortedTime = InsertionSort.measureExecutionTime(Arrays.copyOf(sortedArray, sortedArray.length));
 
             // Average case: Random array
-            int[] randomArray = sorter.randomArray(size);
-            long randomTime = sorter.measureExecutionTime(Arrays.copyOf(randomArray, randomArray.length));
+            int[] randomArray = InsertionSort.randomArray(size);
+            long randomTime = InsertionSort.measureExecutionTime(Arrays.copyOf(randomArray, randomArray.length));
 
             // Worst case: Reversed array
-            int[] reversedArray = sorter.reversedArray(size);
-            long reversedTime = sorter.measureExecutionTime(Arrays.copyOf(reversedArray, reversedArray.length));
+            int[] reversedArray = InsertionSort.reversedArray(size);
+            long reversedTime = InsertionSort.measureExecutionTime(Arrays.copyOf(reversedArray, reversedArray.length));
 
-            // Output formatting
-            String output = size + "      " +
-                            (sortedTime / 1e9) + "       " +  // Convert to seconds
-                            (randomTime / 1e9) + "       " +  // Convert to seconds
-                            (reversedTime / 1e9);             // Convert to seconds
+            //Formatting and Printing the output
+            System.out.printf(size + ": ");
+            System.out.printf( "%10.6f",sortedTime / 1e9 );
+            System.out.print("Sec ");
+            System.out.printf("%10.6f", randomTime / 1e9 );
+            System.out.print("Sec ");
+            System.out.printf("%10.6f", reversedTime / 1e9 );
+            System.out.print("Sec  \n");
 
-            // Print the output
-            System.out.println(output);
         }
     }
 }

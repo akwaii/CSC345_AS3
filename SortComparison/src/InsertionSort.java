@@ -14,7 +14,7 @@ import java.util.Random;
 public class InsertionSort {
 
     // Method that performs the insertion sort
-    public void insertionSort(int[] inputArray) {
+    public static void insertionSort(int[] inputArray) {
         for (int i = 1; i < inputArray.length; i++) {
             int currentValue = inputArray[i];
 
@@ -28,7 +28,7 @@ public class InsertionSort {
     }
 
     // Method that generates a random array
-    public int[] randomArray(int size) {
+    public static int[] randomArray(int size) {
         Random random = new Random();
         int[] arr = new int[size];
         for (int i = 0; i < size; i++) {
@@ -38,7 +38,7 @@ public class InsertionSort {
     }
 
     // Method that generates a reversed array
-    public int[] reversedArray(int size) {
+    public static int[] reversedArray(int size) {
         int[] arr = new int[size];
         for (int i = 0; i < size; i++) {
             arr[i] = size - i; // Fills array in decreasing order
@@ -47,7 +47,7 @@ public class InsertionSort {
     }
 
     // Method to measure execution time of the insertion sort
-    public long measureExecutionTime(int[] arr) {
+    public static long measureExecutionTime(int[] arr) {
         long startTime = System.nanoTime();
         insertionSort(arr);
         long endTime = System.nanoTime();
